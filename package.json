@@ -1,5 +1,5 @@
 {
-  "name": "vue-ui",
+  "name": "y-vue-ui",
   "version": "0.0.1",
   "description": "一个vue的ui组件库",
   "main": "index.js",
@@ -18,5 +18,18 @@
   "bugs": {
     "url": "https://github.com/mickey0320/vue-ui/issues"
   },
-  "homepage": "https://github.com/mickey0320/vue-ui#readme"
+  "homepage": "https://github.com/mickey0320/vue-ui#readme",
+  "dependencies": {
+    "vue": "^2.6.10",
+    "vue-hot-reload-api": "^2.3.4"
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^3.0.2",
+    "node-sass": "^4.13.0",
+    "parcel-bundler": "^1.9.2",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "alias": {
+    "vue" : "./node_modules/vue/dist/vue.common.js"
+  }
 }
