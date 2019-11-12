@@ -1,15 +1,16 @@
 <template>
     <button class="y-button" :class="`icon-${direction}`">
-        <icon v-if="icon" class="icon" :name="icon"></icon>
+        <y-icon v-if="icon && !loading" class="icon" :name="icon"></y-icon>
+        <y-icon v-if="loading" class="loading" name="loading"></y-icon>
         <span class="text">
             <slot></slot>
         </span>
     </button>
 </template>
 <script>
-    import Icon from './icon'
+    import YIcon from './icon'
     export default {
-        components:{Icon},
+        components:{YIcon},
         props:{
             icon:{
                 type: String
@@ -20,11 +21,19 @@
                 validator(val){
                    return val === 'left' || val === 'right'
                 }
+            },
+            loading: {
+                type: Boolean,
+                default: false
             }
         }
     }
 </script>
 <style lang="scss" scoped>
+    @keyframes spin {
+       0%{transform: rotate(0deg);}
+        100%{transform: rotate(360deg);}
+    }
    .y-button{
        font-size: var(--font-size);
        height: var(--button-height);
@@ -48,6 +57,10 @@
        &.icon-right{
            > .text{ order:1;}
            > .icon{order:2;}
+           > .loading{order:2;}
+       }
+       .loading{
+           animation: spin 2s infinite linear;
        }
    }
 </style>
