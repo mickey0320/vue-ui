@@ -6,10 +6,22 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>test page</title>
+    <style>
+        :root{
+            --button-height: 32px;
+            --font-size: 14px;
+            --button-bg: white;
+            --button-active-bg: #eee;
+            --button-radius: 4px;
+            --color: #333;
+            --border-color: #999;
+            --border-color-hover: #666;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-        <y-button></y-button>
+        <y-button>按钮</y-button>
     </div>
     <script src="./src/app.js"></script>
 </body>
