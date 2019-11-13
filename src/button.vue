@@ -1,5 +1,5 @@
 <template>
-    <button class="y-button" :class="`icon-${direction}`">
+    <button class="y-button" :class="`icon-${direction}`" @click="$emit('click')">
         <y-icon v-if="icon && !loading" class="icon" :name="icon"></y-icon>
         <y-icon v-if="loading" class="loading" name="loading"></y-icon>
         <span class="text">
