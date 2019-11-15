@@ -1,5 +1,5 @@
 <template>
-   <div class="toast">
+   <div class="toast" :class="toastPosition">
        <span class="text" v-if="!enableHtml"><slot></slot></span>
        <div v-else v-html="$slots.default[0]"></div>
        <span class="close" @click="onClose">{{closeButton.text}}</span>
@@ -32,6 +32,18 @@
             enableHtml:{
                 type: Boolean,
                 default: false
+            },
+            position:{
+                type: String,
+                default: 'top',
+                validator(val){
+                    return ['top','middle','bottom'].includes(val)
+                }
+            }
+        },
+        computed:{
+            toastPosition(){
+                return `toast-${this.position}`
             }
         },
         mounted() {
@@ -67,7 +79,6 @@
         line-height: 1.8;
         background: $toast-bg;
         position: absolute;
-        top: 0;
         left: 50%;
         transform: translateX(-50%);
         display: flex;
@@ -96,6 +107,16 @@
                 bottom: 0;
                 background-color: #666;
             }
+        }
+        &.toast-top{
+            top: 0;
+        }
+        &.toast-middle{
+            top: 50%;
+            transform: (-50%,-50%);
+        }
+        &.toast-bottom{
+            bottom: 0;
         }
     }
 </style>

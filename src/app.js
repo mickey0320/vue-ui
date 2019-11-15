@@ -14,8 +14,14 @@ Vue.component('y-input',Input)
 new Vue({
     el: '#app',
     created(){
-        this.$toast('这这这这是这这这是',{
-            isAutoClose: false,
-        })
+
+    },
+    methods:{
+       showToast(){
+           this.$toast('这这这这是这这这是',{
+               isAutoClose: false,
+               position: 'top'
+           })
+       }
     }
 })

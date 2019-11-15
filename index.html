@@ -21,20 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <y-input error="出错了"></y-input>
-        <y-input value="什么"></y-input>
-        <y-input :disabled="true" value="禁用"></y-input>
-        <y-input :readonly="true" value="只读"></y-input>
-        <y-button icon="settings" :loading="true">按钮</y-button>
-        <y-button icon="settings" :loading="true" direction="right">按钮</y-button>
-        <y-button icon="settings" direction="left">按钮</y-button>
-        <div style="margin-top:10px">
-            <y-button-group>
-                <y-button icon="left">上一页</y-button>
-                <y-button >中间</y-button>
-                <y-button icon="right" direction="right">下一页</y-button>
-            </y-button-group>
-        </div>
+        <y-button @click="showToast">弹出toast</y-button>
     </div>
     <script src="./src/app.js"></script>
     <script src="//at.alicdn.com/t/font_1505571_vy66acxwfp.js"></script>
