@@ -14,6 +14,8 @@ Vue.component('y-input',Input)
 new Vue({
     el: '#app',
     created(){
-        this.$toast('这是一个toast')
+        this.$toast('<a>这是一个toast</a>',{
+            isAutoClose: false,
+        })
     }
 })
