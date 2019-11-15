@@ -1,6 +1,6 @@
 <template>
    <div class="toast">
-       <slot v-if="!enableHtml"></slot>
+       <span class="text" v-if="!enableHtml"><slot></slot></span>
        <div v-else v-html="$slots.default[0]"></div>
        <span class="close" @click="onClose">{{closeButton.text}}</span>
    </div>
@@ -37,12 +37,12 @@
         mounted() {
             if(this.isAutoClose){
                 setTimeout(() => {
-                    this.remove()
+                    this.close()
                 }, this.duration * 1000)
             }
         },
         methods: {
-            remove(){
+            close(){
                 this.$el.remove()
                 this.$destroy()
             },
@@ -57,11 +57,13 @@
 <style lang="scss" scoped>
     $font-size: 14px;
     $toast-height: 40px;
+    $toast-width: 320px;
     $toast-border-radius: 4px;
     $toast-bg: rgba(0,0,0,.75);
     .toast{
         font-size: $font-size;
         min-height: $toast-height;
+        max-width: $toast-width;
         line-height: 1.8;
         background: $toast-bg;
         position: absolute;
@@ -69,16 +71,31 @@
         left: 50%;
         transform: translateX(-50%);
         display: flex;
-        align-items: center;
         color: white;
         border-radius: $toast-border-radius;
         box-shadow: 0 0 3px 0 rgba(0,0,0,.5);
         padding: 0 16px;
-        .line{
-
+        .text{
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
         }
         .close{
-
+            position: relative;
+            margin-left: 10px;
+            padding-left: 10px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            &::before{
+                content: '';
+                width: 1px;
+                position: absolute;
+                left: 0;
+                top:0;
+                bottom: 0;
+                background-color: #666;
+            }
         }
     }
 </style>
