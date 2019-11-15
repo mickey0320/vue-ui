@@ -10,10 +10,11 @@ describe('Input', () => {
 
     const Constrcutor = Vue.extend(Input)
     let vm = null
-    afterEach(() => {
-        vm.$destroy()
-    })
+
     describe('Test Props', () => {
+        afterEach(() => {
+            vm.$destroy()
+        })
         it('pass value', () => {
             vm = new Constrcutor({
                 propsData:{
@@ -50,7 +51,7 @@ describe('Input', () => {
                     error: 'has error'
                 }
             }).$mount()
-            const errorMsg = vm.$el.querySelector('error-msg')
+            const errorMsg = vm.$el.querySelector('.error-msg')
             const use = vm.$el.querySelector('use')
             expect(use.getAttribute('xlink:href')).to.be.equal('#i-error')
             expect(errorMsg.innerHTML).to.be.equal('has error')
@@ -58,18 +59,24 @@ describe('Input', () => {
     })
 
     describe('Test Events',() => {
-        ['change','input','focus','blur'].forEach(eventName => {
-            it('emit change event',() => {
-                vm = new Constrcutor({
-                    propsData:{
-                        value: 'yanjian',
-                    }
-                }).$mount()
+        vm = new Constrcutor({
+            propsData:{
+                value: 'yanjian',
+            }
+        }).$mount()
+        it('change/input/focus/blur',() => {
+            ['change','input','focus','blur'].forEach(eventName => {
                 const fn = sinon.fake()
                 vm.$on(eventName,fn)
-                expect(fn).to.have.been.called
+                const event = new Event(eventName)
+                Object.defineProperty(event,'target',{
+                    value: {value:'input'}
+                })
+                vm.$el.querySelector('input').dispatchEvent(event)
+                expect(fn).to.have.been.calledWith('input')
             })
         })
+        vm.$destroy()
 
     })
 })

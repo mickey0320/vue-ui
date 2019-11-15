@@ -1,14 +1,14 @@
 <template>
     <div class="wrapper" :class="{error:error}">
         <input type="text" :value="value" :disabled="disabled" :readonly="readonly"
-               @change="$emit('change',$event)"
-               @input="$emit('input',$event)"
-               @focus="$emit('focus',$event)"
-               @blur="$emit('blur`',$event)"
+               @change="$emit('change',$event.target.value)"
+               @input="$emit('input',$event.target.value)"
+               @focus="$emit('focus',$event.target.value)"
+               @blur="$emit('blur',$event.target.value)"
         />
         <template v-if="error">
-            <icon name="settings" class="icon-error"></icon>
-            <span class="icon-msg">{{error}}</span>
+            <icon class="icon-error" name="error"></icon>
+            <span class="error-msg">{{error}}</span>
         </template>
     </div>
 </template>
@@ -49,6 +49,7 @@
         font-size: $font-size;
         display: inline-flex;
         align-items: center;
+        > :not(:last-child){margin-right: .5em; }
         > input{
             height: 32px;
             border: 1px solid $border-color;

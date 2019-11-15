@@ -17,13 +17,14 @@
             --border-color: #999;
             --border-color-hover: #666;
         }
-        .icon{
-            font-size: 1em;
-        }
     </style>
 </head>
 <body>
     <div id="app">
+        <y-input error="出错了"></y-input>
+        <y-input value="什么"></y-input>
+        <y-input :disabled="true" value="禁用"></y-input>
+        <y-input :readonly="true" value="只读"></y-input>
         <y-button icon="settings" :loading="true">按钮</y-button>
         <y-button icon="settings" :loading="true" direction="right">按钮</y-button>
         <y-button icon="settings" direction="left">按钮</y-button>
@@ -36,6 +37,6 @@
         </div>
     </div>
     <script src="./src/app.js"></script>
-    <script src="//at.alicdn.com/t/font_1505571_ycwvq3aisui.js"></script>
+    <script src="//at.alicdn.com/t/font_1505571_vy66acxwfp.js"></script>
 </body>
 </html>
