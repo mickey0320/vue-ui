@@ -80,7 +80,6 @@
         background: $toast-bg;
         position: absolute;
         left: 50%;
-        transform: translateX(-50%);
         display: flex;
         color: white;
         border-radius: $toast-border-radius;
@@ -110,6 +109,7 @@
         }
         &.toast-top{
             top: 0;
+            transform: translateX(-50%);
         }
         &.toast-middle{
             top: 50%;
@@ -117,6 +117,7 @@
         }
         &.toast-bottom{
             bottom: 0;
+            transform: translateX(-50%);
         }
     }
 </style>
