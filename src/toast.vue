@@ -113,6 +113,7 @@
         }
         &.toast-middle{
             top: 50%;
+            
             transform: (-50%,-50%);
         }
         &.toast-bottom{
