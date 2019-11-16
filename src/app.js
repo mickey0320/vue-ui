@@ -19,7 +19,7 @@ new Vue({
     methods:{
        showToast(){
            this.$toast('这这这这是这这这是',{
-               isAutoClose: false,
+               // isAutoClose: false,
                position: 'top'
            })
        }
