@@ -21,7 +21,24 @@
 </head>
 <body>
     <div id="app">
-        <y-button @click="showToast">弹出toast</y-button>
+        <y-tabs :selected="selectedTab">
+            <y-tabs-header>
+                <y-tabs-item name="item1">项目一</y-tabs-item>
+                <y-tabs-item name="item2">项目二</y-tabs-item>
+                <y-tabs-item name="item3">项目三</y-tabs-item>
+            </y-tabs-header>
+            <y-tabs-body>
+                <y-tabs-panel name="item1">
+                    这是项目一的内容
+                </y-tabs-panel>
+                <y-tabs-panel name="item2">
+                    这是项目二的内容
+                </y-tabs-panel>
+                <y-tabs-panel name="item3">
+                    这是项目三的内容
+                </y-tabs-panel>
+            </y-tabs-body>
+        </y-tabs>
     </div>
     <script src="./src/app.js"></script>
     <script src="//at.alicdn.com/t/font_1505571_vy66acxwfp.js"></script>
