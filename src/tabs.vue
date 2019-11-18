@@ -5,6 +5,7 @@
 </template>
 
 <script>
+    import Vue from 'vue'
     export default {
         name: "tabs",
         props:{
@@ -19,7 +20,23 @@
                     return ['horizontal','vertical'].includes(val)
                 }
             }
-        }
+        },
+        data(){
+            return {
+                eventBus: new Vue()
+            }
+        },
+        provide(){
+            return {
+                eventBus: this.eventBus
+            }
+        },
+        mounted(){
+            const { eventBus, selected } = this
+            console.log(selected)
+            eventBus.$emit('update:selected', selected)
+        },
+
     }
 </script>
 

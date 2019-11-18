@@ -10,6 +10,13 @@
     }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+    $tab-height: 40px;
+    .tabs-header{
+        display: flex;
+        height: $tab-height;
+        justify-content: flex-start;
+        align-items: center;
+        border: 1px solid red;
+    }
 </style>
