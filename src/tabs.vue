@@ -34,7 +34,9 @@
         mounted(){
             const { eventBus, selected } = this
             const selectedComp = this._findActiveItem()
-            console.log(selectedComp.$el)
+            eventBus.$on('update:selected', (selected) => {
+                this.$emit('update:selected', selected)
+            })
             eventBus.$emit('update:selected', selected, selectedComp)
         },
         methods: {

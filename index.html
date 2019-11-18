@@ -21,7 +21,10 @@
 </head>
 <body>
     <div id="app">
-        <y-tabs :selected="selectedTab">
+        <div>
+            {{selectedTab}}
+        </div>
+        <y-tabs :selected.sync="selectedTab">
             <y-tabs-header>
                 <y-tabs-item name="item1">综艺</y-tabs-item>
                 <y-tabs-item name="item2">体育</y-tabs-item>
