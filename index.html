@@ -23,9 +23,10 @@
     <div id="app">
         <y-tabs :selected="selectedTab">
             <y-tabs-header>
-                <y-tabs-item name="item1">项目一</y-tabs-item>
-                <y-tabs-item name="item2">项目二</y-tabs-item>
-                <y-tabs-item name="item3">项目三</y-tabs-item>
+                <y-tabs-item name="item1">综艺</y-tabs-item>
+                <y-tabs-item name="item2">体育</y-tabs-item>
+                <y-tabs-item name="item3">财经新闻</y-tabs-item>
+                <y-tabs-item name="item4" disabled>电视剧</y-tabs-item>
             </y-tabs-header>
             <y-tabs-body>
                 <y-tabs-panel name="item1">
@@ -36,6 +37,9 @@
                 </y-tabs-panel>
                 <y-tabs-panel name="item3">
                     这是项目三的内容
+                </y-tabs-panel>
+                <y-tabs-panel name="item4">
+                    这是项目四的内容
                 </y-tabs-panel>
             </y-tabs-body>
         </y-tabs>

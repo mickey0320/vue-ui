@@ -33,10 +33,18 @@
         },
         mounted(){
             const { eventBus, selected } = this
-            console.log(selected)
-            eventBus.$emit('update:selected', selected)
+            const selectedComp = this._findActiveItem()
+            console.log(selectedComp.$el)
+            eventBus.$emit('update:selected', selected, selectedComp)
         },
+        methods: {
+            _findActiveItem(){
+                const headerComp = this.$children.find(child => child.$options.name === 'tabsHeader')
+                const itemComp = headerComp.$children.find(child => child.name === this.selected)
 
+                return itemComp
+            }
+        }
     }
 </script>
 

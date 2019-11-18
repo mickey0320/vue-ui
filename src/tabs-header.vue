@@ -1,22 +1,39 @@
 <template>
     <div class="tabs-header">
         <slot></slot>
+        <div class="line" ref="line"></div>
     </div>
 </template>
 
 <script>
     export default {
-        name: "tabs-header"
+        name: "tabsHeader",
+        inject: ['eventBus'],
+        created(){
+            this.eventBus.$on('update:selected', (name, selectedVm) => {
+                const { left, width } = selectedVm.$el.getBoundingClientRect()
+                const line = this.$refs.line
+                line.style.left = `${left}px`
+                line.style.width = `${width}px`
+            })
+        }
     }
 </script>
 
 <style lang="scss" scoped>
     $tab-height: 40px;
+    $blue: blue;
     .tabs-header{
         display: flex;
         height: $tab-height;
         justify-content: flex-start;
-        align-items: center;
-        border: 1px solid red;
+        position: relative;
+        border-bottom: 1px solid #ddd;
+        > .line{
+            position: absolute;
+            border-bottom: 2px solid $blue;
+            bottom: 0;
+            transition: all .5s;
+        }
     }
 </style>

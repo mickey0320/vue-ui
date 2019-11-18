@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: "tabs-panel",
+        name: "tabsPanel",
         inject: ['eventBus'],
         props:{
             name: {
@@ -38,8 +38,8 @@
 
 <style lang="scss" scoped>
     .tabs-panel{
+        padding: 8px;
         &.tab-panel-active{
-            background: red;
         }
     }
 </style>
