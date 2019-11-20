@@ -57,20 +57,26 @@
                 const { scrollLeft, scrollTop } = document.documentElement
                 const { left, top, height,width } = target.getBoundingClientRect()
                 const { height: targetH } = contentWrapper.getBoundingClientRect()
-                console.log(height, targetH)
-                if(this.position === 'top'){
-                    contentWrapper.style.left = `${scrollLeft + left}px`
-                    contentWrapper.style.top = `${scrollTop + top}px`
-                } else if(this.position === 'bottom'){
-                    contentWrapper.style.left = `${scrollLeft + left}px`
-                    contentWrapper.style.top = `${scrollTop + top + height }px`
-                } else if (this.position === 'left') {
-                    contentWrapper.style.top = `${scrollTop + top + (height - targetH)/2 }px`
-                    contentWrapper.style.left = `${scrollLeft + left}px`
-                } else if (this.position === 'right'){
-                    contentWrapper.style.top = `${scrollTop + top + (height - targetH)/2 }px`
-                    contentWrapper.style.left = `${scrollLeft + left + width}px`
+                const positionMap = {
+                    top: {
+                        left:scrollLeft + left,
+                        top: scrollTop + top
+                    },
+                    bottom:{
+                        left: scrollLeft + left,
+                        top: scrollTop + top + height,
+                    },
+                    left: {
+                        left:scrollLeft + left,
+                        top:scrollTop + top + (height - targetH)/2,
+                    },
+                    right: {
+                        left:scrollLeft + left + width,
+                        top:scrollTop + top + (height - targetH)/2,
+                    }
                 }
+                contentWrapper.style.left = `${positionMap[this.position].left}px`
+                contentWrapper.style.top = `${positionMap[this.position].top}px`
             },
             onAction(e){
                 if (!this.visible) {
