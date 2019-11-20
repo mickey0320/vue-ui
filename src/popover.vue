@@ -40,9 +40,10 @@
             },
             setPosition(target){
                 const contentWrapper = this.$refs.contentWrapper
+                const { scrollLeft, scrollTop } = document.documentElement
                 const { left, top } = target.getBoundingClientRect()
-                contentWrapper.style.left = `${left}px`
-                contentWrapper.style.top = `${top}px`
+                contentWrapper.style.left = `${scrollLeft + left}px`
+                contentWrapper.style.top = `${scrollTop + top}px`
             },
             onAction(e){
                 if (!this.visible) {
