@@ -20,14 +20,24 @@
         #app{
             margin: 100px;
         }
+        .popover-box{
+            border: 1px solid red;
+        }
     </style>
 </head>
 <body>
     <div id="app">
-       <y-popover>
-           <span slot="content">这是弹出内容</span>
-           <button>popover</button>
-       </y-popover>
+        <div class="popover-box">
+            <y-popover>
+                <span slot="content">这是弹出内容</span>
+                <button>popover</button>
+            </y-popover>
+            <y-popover>
+                <span slot="content">这是弹出内容</span>
+                <button>popover</button>
+            </y-popover>
+        </div>
+
     </div>
     <script src="./src/app.js"></script>
     <script src="//at.alicdn.com/t/font_1505571_vy66acxwfp.js"></script>

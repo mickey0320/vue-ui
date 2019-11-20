@@ -34,9 +34,21 @@
                 console.log('移除doc事件');
                 document.removeEventListener('click', this.docEvent)
             },
-            onAction(){
+            appendToBody(){
+               const contentWrapper = this.$refs.contentWrapper
+                document.body.appendChild(contentWrapper)
+            },
+            setPosition(target){
+                const contentWrapper = this.$refs.contentWrapper
+                const { left, top } = target.getBoundingClientRect()
+                contentWrapper.style.left = `${left}px`
+                contentWrapper.style.top = `${top}px`
+            },
+            onAction(e){
                 if (!this.visible) {
                     this.visible = true
+                    this.appendToBody()
+                    this.setPosition(e.target)
                     setTimeout(() => {
                         this.addDocEvent()
                     })
@@ -52,12 +64,12 @@
     .popover{
         display: inline-block;
         position: relative;
-        .content-wrapper{
-            position: absolute;
-            top: 0;
-            left: 0;
-            transform: translateY(-100%);
-            border: 1px solid green;
-        }
+    }
+    .content-wrapper{
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateY(-100%);
+        border: 1px solid green;
     }
 </style>
