@@ -17,35 +17,17 @@
             --border-color: #999;
             --border-color-hover: #666;
         }
+        #app{
+            margin: 100px;
+        }
     </style>
 </head>
 <body>
     <div id="app">
-        <div>
-            {{selectedTab}}
-        </div>
-        <y-tabs :selected.sync="selectedTab">
-            <y-tabs-header>
-                <y-tabs-item name="item1">综艺</y-tabs-item>
-                <y-tabs-item name="item2">体育</y-tabs-item>
-                <y-tabs-item name="item3">财经新闻</y-tabs-item>
-                <y-tabs-item name="item4" disabled>电视剧</y-tabs-item>
-            </y-tabs-header>
-            <y-tabs-body>
-                <y-tabs-panel name="item1">
-                    这是项目一的内容
-                </y-tabs-panel>
-                <y-tabs-panel name="item2">
-                    这是项目二的内容
-                </y-tabs-panel>
-                <y-tabs-panel name="item3">
-                    这是项目三的内容
-                </y-tabs-panel>
-                <y-tabs-panel name="item4">
-                    这是项目四的内容
-                </y-tabs-panel>
-            </y-tabs-body>
-        </y-tabs>
+       <y-popover>
+           <span slot="content">这是弹出内容</span>
+           <button>popover</button>
+       </y-popover>
     </div>
     <script src="./src/app.js"></script>
     <script src="//at.alicdn.com/t/font_1505571_vy66acxwfp.js"></script>

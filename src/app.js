@@ -9,6 +9,7 @@ import TabsHeader from './tabs-header'
 import TabsItem from './tabs-item'
 import TabsBody from './tabs-body'
 import TabsPanel from './tabs-panel'
+import Popover from './popover'
 
 Vue.use(Plugin)
 
@@ -20,6 +21,7 @@ Vue.component('y-tabs-header',TabsHeader)
 Vue.component('y-tabs-item',TabsItem)
 Vue.component('y-tabs-body',TabsBody)
 Vue.component('y-tabs-panel',TabsPanel)
+Vue.component('y-popover',Popover)
 
 new Vue({
     el: '#app',
