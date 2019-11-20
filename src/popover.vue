@@ -62,6 +62,8 @@
 </script>
 
 <style lang="scss" scoped>
+    $content-border-color: #333;
+    $content-border-radius: 4px;
     .popover{
         display: inline-block;
         position: relative;
@@ -71,6 +73,30 @@
         top: 0;
         left: 0;
         transform: translateY(-100%);
-        border: 1px solid green;
+        margin-top: -10px;
+        /*box-shadow: 0 0 3px rgba(0,0,0,.5);*/
+        filter: drop-shadow(0 1px 1px rgba(0,0,0,.5));
+        background: #fff;
+        border: 1px solid $content-border-color;
+        border-radius: $content-border-radius;
+        padding: .5em 1em;
+        max-width: 20em;
+        word-break: break-all;
+        &:before,&:after{
+            content: '';
+            display: block;
+            position: absolute;
+            left: 10px;
+            transform: translateY(100%);
+            border: 10px solid transparent;
+        }
+        &:before{
+            bottom: 0;
+            border-top-color: #000;
+        }
+        &:after{
+            bottom: 1px;
+            border-top-color: #fff;
+        }
     }
 </style>
