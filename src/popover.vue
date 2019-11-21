@@ -3,7 +3,7 @@
         <div class="content-wrapper" :class="positionClass" ref="contentWrapper" v-show="visible">
             <slot name="content"></slot>
         </div>
-        <div class="operate-wrapper"  ref="operateWrapper" @click="onAction">
+        <div class="operate-wrapper"  ref="operateWrapper">
             <slot></slot>
         </div>
     </div>
@@ -19,11 +19,27 @@
                 validator(val){
                    return ['top','right','bottom','left'].includes(val)
                 }
+            },
+            trigger: {
+                type: String,
+                default: 'hover',
+                validator(val) {
+                    return ['click','hover'].includes(val)
+                }
             }
         },
         data() {
             return {
                 visible: false,
+            }
+        },
+        mounted(){
+           const operateWrapper = this.$refs.operateWrapper
+            if(this.trigger === 'click'){
+                operateWrapper.addEventListener('click', this.onAction)
+            }else {
+                operateWrapper.addEventListener('mouseenter', this.onAction)
+                operateWrapper.addEventListener('mouseleave', this.onAction)
             }
         },
         computed:{
