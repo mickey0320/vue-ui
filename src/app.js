@@ -35,7 +35,7 @@ new Vue({
     },
     data(){
         return {
-            selectedTab: 'item2'
+            selected: ['name2']
         }
     },
     methods:{

@@ -28,7 +28,7 @@
         },
         created(){
             this.eventBus.$on('update:selected', (selected) => {
-               if(selected === this.name){
+               if(selected.includes(this.name)){
                    this.visible = true
                }else {
                    this.visible = false
@@ -37,8 +37,11 @@
         },
         methods: {
             onToggle() {
-                this.visible = !this.visible
-                this.eventBus.$emit('update:selected', this.name)
+                if (!this.visible) {
+                   this.eventBus.$emit('update:addSelected', this.name)
+                } else{
+                    this.eventBus.$emit('update:removeSelected', this.name)
+                }
             }
         }
     }
