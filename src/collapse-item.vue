@@ -1,6 +1,6 @@
 <template>
    <div class="collapse-item">
-      <div class="title" @click="xx">
+      <div class="title" @click="onToggle">
          {{title}}
       </div>
        <div class="content" v-if="visible">
@@ -12,8 +12,12 @@
 <script>
     export default {
         name: "collapse-item",
+        inject: ['eventBus'],
         props: {
             title: {
+                type: String,
+            },
+            name: {
                 type: String,
             }
         },
@@ -22,9 +26,19 @@
                visible: false,
            }
         },
+        created(){
+            this.eventBus.$on('update:selected', (selected) => {
+               if(selected === this.name){
+                   this.visible = true
+               }else {
+                   this.visible = false
+               }
+            })
+        },
         methods: {
-            xx() {
+            onToggle() {
                 this.visible = !this.visible
+                this.eventBus.$emit('update:selected', this.name)
             }
         }
     }
