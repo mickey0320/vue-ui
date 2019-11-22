@@ -1,5 +1,5 @@
 module.exports = {
-    base: 'vue-ui',
+    base: '/vue-ui/',
     title: 'vue组件库',
     description: '一个用vue写的ui组件库',
     themeConfig: {
