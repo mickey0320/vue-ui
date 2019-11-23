@@ -48,8 +48,7 @@
 </script>
 
 <style lang="scss" scoped>
-    $border-color: #ddd;
-    $border-radius: 4px;
+    @import "var";
     .collapse-item{
         > .title{
             min-height: 32px;

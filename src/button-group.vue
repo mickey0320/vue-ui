@@ -10,6 +10,7 @@
 </script>
 
 <style lang="scss">
+    @import "./var";
     .y-button-group{
         display: inline-flex;
         > .y-button {
@@ -18,12 +19,12 @@
             }
             border-radius: 0;
             &:first-child{
-                border-top-left-radius: var(--button-radius);
-                border-bottom-left-radius: var(--button-radius);
+                border-top-left-radius: $button-radius;
+                border-bottom-left-radius: $button-radius;
             }
             &:last-child{
-                border-top-right-radius: var(--button-radius);
-                border-bottom-right-radius: var(--button-radius);
+                border-top-right-radius: $button-radius;
+                border-bottom-right-radius: $button-radius;
             }
             &:hover{
                 position: relative;

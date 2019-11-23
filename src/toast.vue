@@ -71,6 +71,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @import "var";
+
     @keyframes fade-in {
         0%{opacity: 0;}
         100%{opacity: 1;}
@@ -83,11 +85,7 @@
         0%{opacity: 0; transform: translateY(100%);}
         100%{opacity: 1; transform: translateY(0%);}
     }
-    $font-size: 14px;
-    $toast-height: 40px;
-    $toast-width: 320px;
-    $toast-border-radius: 4px;
-    $toast-bg: rgba(0,0,0,.75);
+
     .toast-wrapper{
         position: absolute;
         left: 50%;

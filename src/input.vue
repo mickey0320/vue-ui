@@ -38,13 +38,7 @@
 </script>
 
 <style lang="scss" scoped>
-    $font-size: 12px;
-    $height: 32px;
-    $border-color: #999;
-    $border-color-hover: #666;
-    $border-radius: 4px;
-    $border-shadow-color: rgba(0,0,0,.5);
-    $red: #F1453D;
+    @import "var";
     .wrapper{
         font-size: $font-size;
         display: inline-flex;

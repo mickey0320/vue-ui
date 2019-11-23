@@ -7,34 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>test page</title>
     <style>
-        :root{
-            --button-height: 32px;
-            --font-size: 14px;
-            --button-bg: white;
-            --button-active-bg: #eee;
-            --button-radius: 4px;
-            --color: #333;
-            --border-color: #999;
-            --border-color-hover: #666;
-        }
         #app{
             margin: 100px;
-        }
-        .popover-box{
-        }
-        p{
-            height: 800px;
         }
     </style>
 </head>
 <body>
     <div id="app">
-        {{selected}}
-       <y-collapse :selected.sync="selected" multiple>
-           <y-collapse-item title="标题1" name="name1">这里是内容1</y-collapse-item>
-           <y-collapse-item title="标题2" name="name2">这里是内容2</y-collapse-item>
-           <y-collapse-item title="标题3" name="name3">这里是内容3</y-collapse-item>
-       </y-collapse>
+        <y-button>按钮</y-button>
+        <y-button-group>
+            <y-button>左边</y-button>
+            <y-button>中间的按钮</y-button>
+            <y-button>右边</y-button>
+        </y-button-group>
 <!--        <p></p>-->
 <!--        <div class="popover-box">-->
 <!--            <y-popover>-->
