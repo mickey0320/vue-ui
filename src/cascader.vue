@@ -33,6 +33,9 @@
         .cascader-content{
             position: absolute;
             top: 100%;
+            border: 1px solid #e4e7ed;
+            box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+            background: #fff;
         }
     }
 </style>
