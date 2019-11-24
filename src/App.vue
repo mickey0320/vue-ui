@@ -1,6 +1,6 @@
 <template>
     <div >
-       <y-cascader :list="list"></y-cascader>
+       <y-cascader :data="data"></y-cascader>
     </div>
 
 </template>
@@ -41,7 +41,7 @@
             return {
                 selectedTab: 'item3',
                 selected: ['item3'],
-                list: data,
+                data,
             }
         },
     }
