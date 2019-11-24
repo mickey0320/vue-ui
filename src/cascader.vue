@@ -1,10 +1,15 @@
 <template>
     <div class="cascader">
-        <div class="cascader-trigger">
+        <div class="cascader-trigger" @click="show">
 
         </div>
-        <div class="cascader-content">
-            <cascader-item :data="data"></cascader-item>
+        <div class="cascader-content" v-show="visible">
+            <cascader-item
+                    :data="data"
+                    :selected="selected"
+                    @update:selected="onUpdate">
+
+            </cascader-item>
         </div>
     </div>
 </template>
@@ -14,10 +19,29 @@
     export default {
         name: "cascader",
         props: {
-            data: Array,
+            data: {
+                type: Array,
+            },
+            selected: {
+                type: Array,
+                default: () => []
+            }
+        },
+        data(){
+            return {
+                visible: false,
+            }
         },
         components:{
             cascaderItem,
+        },
+        methods: {
+            show(){
+               this.visible = true
+            },
+            onUpdate(selected){
+                this.$emit('update:selected', selected)
+            }
         }
     }
 </script>

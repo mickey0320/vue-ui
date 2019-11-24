@@ -1,14 +1,19 @@
 <template>
     <div class="cascader-items">
         <div class="parent">
-            <div class="item" v-for="item in data" @click="showChildren(item)">
+            <div class="item" v-for="item in data" @click="onClickItem(item)">
                 {{item.name}}
                 <y-icon v-if="item.children" name="right"></y-icon>
             </div>
 
         </div>
         <div class="child" v-if="childrenData">
-            <cascader-items :data="childrenData" :level="level + 1"></cascader-items>
+            <cascader-items
+                    :data="childrenData"
+                    :level="level + 1"
+                    :selected="selected"
+                    @update:selected="onUpdate">
+            </cascader-items>
         </div>
     </div>
 </template>
@@ -27,22 +32,31 @@
             level: {
                 type: Number,
                 default: 0,
-            }
-        },
-        data(){
-            return {
-                curItem: {},
+            },
+            selected: {
+                type: Array,
+                default: () => []
             }
         },
         computed:{
             childrenData(){
-                return this.curItem.children
+                const currentItem = this.selected[this.level]
+                if (currentItem && currentItem.children) {
+                    return currentItem.children
+                }
+                return null
             }
         },
         methods:{
-           showChildren(item){
-               this.curItem = item
-           }
+            onClickItem(item){
+                const selectedCopy = JSON.parse(JSON.stringify(this.selected))
+                selectedCopy.splice(this.level)
+                selectedCopy[this.level] = item
+                this.$emit('update:selected', selectedCopy)
+            },
+            onUpdate(selected){
+               this.$emit('update:selected', selected)
+            }
         }
     }
 </script>

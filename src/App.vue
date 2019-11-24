@@ -1,6 +1,6 @@
 <template>
     <div >
-       <y-cascader :data="data"></y-cascader>
+       <y-cascader :data="data" :selected.sync="selectedCascader"></y-cascader>
     </div>
 
 </template>
@@ -42,6 +42,7 @@
                 selectedTab: 'item3',
                 selected: ['item3'],
                 data,
+                selectedCascader: []
             }
         },
     }
