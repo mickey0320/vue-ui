@@ -36,7 +36,7 @@
             selected: {
                 type: Array,
                 default: () => []
-            }
+            },
         },
         computed:{
             childrenData(){
@@ -53,6 +53,7 @@
                 selectedCopy.splice(this.level)
                 selectedCopy[this.level] = item
                 this.$emit('update:selected', selectedCopy)
+
             },
             onUpdate(selected){
                this.$emit('update:selected', selected)
@@ -65,6 +66,8 @@
     .cascader-items{
         display: flex;
         .parent{
+            height: 200px;
+            overflow: auto;
             .item{
                 padding: 0 30px 0 20px;
                 height: 34px;

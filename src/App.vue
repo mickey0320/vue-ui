@@ -1,6 +1,11 @@
 <template>
     <div >
-       <y-cascader :data="data" :selected.sync="selectedCascader"></y-cascader>
+        {{data}}
+       <y-cascader
+               :data.sync="data"
+               :selected.sync="selectedCascader"
+                :loadData="loadData">
+       </y-cascader>
     </div>
 
 </template>
@@ -19,7 +24,7 @@
     import CollapseItem from './collapse-item'
     import Cascader from './cascader'
 
-    import {data} from './data'
+    import {data as dbData} from './db'
 
     export default {
         name: "App.vue",
@@ -41,10 +46,21 @@
             return {
                 selectedTab: 'item3',
                 selected: ['item3'],
-                data,
+                data:[],
                 selectedCascader: []
             }
         },
+        methods:{
+            loadData({id}, cb){
+                const result = dbData.filter(item => item.parent_id === id)
+                cb(result)
+            }
+        },
+        created(){
+            this.loadData({id:0}, (result)=>{
+               this.data = result
+            })
+        }
     }
 </script>
 
