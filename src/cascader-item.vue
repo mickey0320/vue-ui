@@ -40,9 +40,14 @@
         },
         computed:{
             childrenData(){
-                const currentItem = this.selected[this.level]
-                if (currentItem && currentItem.children) {
-                    return currentItem.children
+                const { selected, level, data } = this
+                // selected最开始是[],所以要判断一下
+                if(selected[level]){
+                    const currentItem = data.find(item => item.id === selected[level].id)
+                    // console.log(this.level)
+                    if (currentItem && currentItem.children) {
+                        return currentItem.children
+                    }
                 }
                 return null
             }

@@ -1,6 +1,6 @@
 <template>
     <div >
-        {{data}}
+<!--        {{data && data[4] && data[4].children}}-->
        <y-cascader
                :data.sync="data"
                :selected.sync="selectedCascader"
@@ -52,8 +52,10 @@
         },
         methods:{
             loadData({id}, cb){
-                const result = dbData.filter(item => item.parent_id === id)
-                cb(result)
+                setTimeout(()=>{
+                    const result = dbData.filter(item => item.parent_id === id)
+                    cb(result)
+                },500)
             }
         },
         created(){
