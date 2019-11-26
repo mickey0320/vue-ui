@@ -6,7 +6,12 @@
 <!--               :selected.sync="selectedCascader"-->
 <!--                :loadData="loadData">-->
 <!--       </y-cascader>-->
-        <y-table :data="tableData" :columns="columns" :bordered="false"></y-table>
+        {{tableSelected}}
+        <y-table
+                :data="tableData"
+                :columns="columns"
+                :bordered="true"
+                :selected.sync="tableSelected"></y-table>
     </div>
 
 </template>
@@ -54,6 +59,7 @@
                 selectedCascader: [],
                 tableData,
                 columns,
+                tableSelected: [],
             }
         },
         methods:{

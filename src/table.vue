@@ -3,12 +3,14 @@
         <table class="table" :class="{bordered, striped, compact}">
             <thead>
                 <tr>
+                    <input type="checkbox" :checked="allCheckedStatus"  @click="onClickAll" />
                     <th v-if="indexVisible">#</th>
                     <th v-for="col in columns">{{col.title}}</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="(rowData,index) in data">
+                    <input type="checkbox" :checked="getCheckedStatus(rowData)" @click="onClickItem($event,rowData)" />
                     <td v-if="indexVisible">{{index + 1}}</td>
                     <td v-for="col in columns">{{rowData[col.field]}}</td>
                 </tr>
@@ -26,6 +28,11 @@
             },
             data: {
                 type: Array,
+            },
+            // 选中的项
+            selected:{
+                type: Array,
+                default: () => []
             },
             // 是否显示边框
             bordered:{
@@ -46,6 +53,42 @@
             compact: {
                 type: Boolean,
                 default: false,
+            }
+        },
+        computed:{
+            allCheckedStatus(){
+                return this.selected.length === this.data.length;
+            }
+        },
+        watch:{
+            selected(){
+                if (this.selected.length === this.data.length){
+                }
+            }
+        },
+        methods: {
+            getCheckedStatus(rowData){
+                return this.selected.findIndex(item => item.id === rowData.id) > -1
+            },
+            onClickAll(e){
+                const { checked } = e.target
+                if (checked) {
+                   this.$emit("update:selected", this.data)
+                } else {
+                   this.$emit('update:selected', [])
+                }
+            },
+            onClickItem(e, item){
+                const selectedCopy = JSON.parse(JSON.stringify(this.selected))
+                const { checked } = e.target
+                if (checked){
+                    selectedCopy.push(item)
+                } else {
+                    const removingIndex = selectedCopy.findIndex(selected => selected.id === item.id)
+                    selectedCopy.splice(removingIndex, 1)
+                }
+
+                this.$emit('update:selected', selectedCopy)
             }
         }
     }
@@ -72,9 +115,7 @@
         }
 
         &.bordered{
-            .table{
-                border: 1px solid $table-border-color;
-            }
+            border: 1px solid $table-border-color;
             td,th{
                 border: 1px solid $table-border-color;
             }
