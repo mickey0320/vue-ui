@@ -3,7 +3,7 @@
         <table class="table" :class="{bordered, striped, compact}">
             <thead>
                 <tr>
-                    <input type="checkbox" :checked="allCheckedStatus"  @click="onClickAll" />
+                    <input type="checkbox" ref="allChecked" :checked="allCheckedStatus"  @click="onClickAll" />
                     <th v-if="indexVisible">#</th>
                     <th v-for="col in columns">{{col.title}}</th>
                 </tr>
@@ -62,7 +62,13 @@
         },
         watch:{
             selected(){
-                if (this.selected.length === this.data.length){
+                const { allChecked } = this.$refs
+                const { length: selectedLen} = this.selected
+                const { length: dataLen} = this.data
+                if (selectedLen === 0 || selectedLen === dataLen){
+                    allChecked.indeterminate = false
+                } else {
+                    allChecked.indeterminate = true
                 }
             }
         },
