@@ -1,11 +1,12 @@
 <template>
     <div >
 <!--        {{data && data[4] && data[4].children}}-->
-       <y-cascader
-               :data.sync="data"
-               :selected.sync="selectedCascader"
-                :loadData="loadData">
-       </y-cascader>
+<!--       <y-cascader-->
+<!--               :data.sync="data"-->
+<!--               :selected.sync="selectedCascader"-->
+<!--                :loadData="loadData">-->
+<!--       </y-cascader>-->
+        <y-table :data="tableData" :columns="columns" :bordered="false"></y-table>
     </div>
 
 </template>
@@ -23,8 +24,10 @@
     import Collapse from './collapse'
     import CollapseItem from './collapse-item'
     import Cascader from './cascader'
+    import Table from './table'
 
     import {data as dbData} from './db'
+    import { tableData, columns} from './tableData'
 
     export default {
         name: "App.vue",
@@ -41,13 +44,16 @@
             yCollapse: Collapse,
             yCollapseItem: CollapseItem,
             yCascader: Cascader,
+            YTable: Table,
         },
         data(){
             return {
                 selectedTab: 'item3',
                 selected: ['item3'],
                 data:[],
-                selectedCascader: []
+                selectedCascader: [],
+                tableData,
+                columns,
             }
         },
         methods:{
