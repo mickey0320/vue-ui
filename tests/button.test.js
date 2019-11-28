@@ -1,7 +1,7 @@
 const { expect } = chai
 
 import Vue from 'vue'
-import Button from '../src/button'
+import Button from '../src/button/button'
 
 describe('Test Button', () => {
     it('Button shoule exsit',() => {

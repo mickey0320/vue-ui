@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    import cascaderItem from './cascader-item';
+    import cascaderItem from '../cascader/cascader-item';
     export default {
         name: "cascader",
         props: {
@@ -86,7 +86,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "var";
+    @import "../var";
     .cascader{
         font-size: $font-size;
         position: relative;

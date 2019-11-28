@@ -8,7 +8,7 @@
     </button>
 </template>
 <script>
-    import YIcon from './icon'
+    import YIcon from '../icon/icon'
     export default {
         components:{YIcon},
         props:{
@@ -30,7 +30,7 @@
     }
 </script>
 <style lang="scss" scoped>
-    @import "./var";
+    @import "../var";
     @keyframes spin {
        0%{transform: rotate(0deg);}
         100%{transform: rotate(360deg);}

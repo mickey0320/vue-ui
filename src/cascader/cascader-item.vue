@@ -19,7 +19,7 @@
 </template>
 
 <script>
-    import icon from './icon'
+    import icon from '../icon/icon'
     export default {
         name: "cascaderItems",
         components:{

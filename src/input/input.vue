@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    import Icon from './icon'
+    import Icon from '../icon/icon'
     export default {
         name: "YInput",
         components:{icon: Icon},
@@ -38,7 +38,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "var";
+    @import "../var";
     .wrapper{
         font-size: $font-size;
         display: inline-flex;

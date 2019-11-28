@@ -1,4 +1,4 @@
-import Toast from './toast'
+import Toast from './toast/toast'
 
 function createToast(Vue, message, options, onClose){
     const Constructor = Vue.extend(Toast)

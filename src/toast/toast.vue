@@ -71,7 +71,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "var";
+    @import "../var";
 
     @keyframes fade-in {
         0%{opacity: 0;}

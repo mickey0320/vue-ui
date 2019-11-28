@@ -10,7 +10,7 @@
 </script>
 
 <style lang="scss">
-    @import "./var";
+    @import "../var";
     .y-button-group{
         display: inline-flex;
         > .y-button {

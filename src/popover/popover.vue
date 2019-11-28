@@ -113,7 +113,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "var";
+    @import "../var";
     .popover{
         display: inline-block;
         position: relative;

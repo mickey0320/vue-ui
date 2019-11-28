@@ -101,7 +101,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "var";
+    @import "../var";
     .table{
         font-size: $font-size;
         color: #606266;

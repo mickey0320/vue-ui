@@ -1,18 +1,17 @@
 <template>
     <div >
 <!--        {{data && data[4] && data[4].children}}-->
-<!--       <y-cascader-->
-<!--               :data.sync="data"-->
-<!--               :selected.sync="selectedCascader"-->
-<!--                :loadData="loadData">-->
-<!--       </y-cascader>-->
-<!--        {{tableSelected}}-->
-<!--        <div style="height: 100px;border: 1px solid red;"></div>-->
-<!--        <y-table-->
-<!--                :data="tableData"-->
-<!--                :columns="columns"-->
-<!--                :bordered="true"-->
-<!--                :selected.sync="tableSelected"></y-table>-->
+       <y-cascader
+               :data.sync="data"
+               :selected.sync="selectedCascader"
+                :loadData="loadData">
+       </y-cascader>
+        {{tableSelected}}
+        <y-table
+                :data="tableData"
+                :columns="columns"
+                :bordered="true"
+                :selected.sync="tableSelected"></y-table>
 
 
         <p>段落</p>
@@ -50,20 +49,20 @@
 </template>
 
 <script>
-    import Button from './button'
-    import ButtonGroup from './button-group'
-    import Input from './input'
-    import Tabs from './tabs'
-    import TabsHeader from './tabs-header'
-    import TabsItem from './tabs-item'
-    import TabsBody from './tabs-body'
-    import TabsPanel from './tabs-panel'
-    import Popover from './popover'
-    import Collapse from './collapse'
-    import CollapseItem from './collapse-item'
-    import Cascader from './cascader'
-    import Table from './table'
-    import Sticky from './sticky'
+    import Button from './button/button'
+    import ButtonGroup from './button/button-group'
+    import Input from './input/input'
+    import Tabs from './tabs/tabs'
+    import TabsHeader from './tabs/tabs-header'
+    import TabsItem from './tabs/tabs-item'
+    import TabsBody from './tabs/tabs-body'
+    import TabsPanel from './tabs/tabs-panel'
+    import Popover from './popover/popover'
+    import Collapse from './collapse/collapse'
+    import CollapseItem from './collapse/collapse-item'
+    import Cascader from './collapse/cascader'
+    import Table from './table/table'
+    import Sticky from './sticky/sticky'
 
     import {data as dbData} from './db'
     import { tableData, columns} from './tableData'

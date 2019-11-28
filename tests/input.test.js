@@ -1,7 +1,7 @@
 const { expect } = chai
 
 import Vue from 'vue'
-import Input from '../src/input'
+import Input from '../src/input/input'
 
 describe('Input', () => {
     it('Input exsits', () => {
