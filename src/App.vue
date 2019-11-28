@@ -1,49 +1,18 @@
 <template>
     <div >
 <!--        {{data && data[4] && data[4].children}}-->
-       <y-cascader
-               :data.sync="data"
-               :selected.sync="selectedCascader"
-                :loadData="loadData">
-       </y-cascader>
-        {{tableSelected}}
-        <y-table
-                :data="tableData"
-                :columns="columns"
-                :bordered="true"
-                :selected.sync="tableSelected"></y-table>
-
-
-        <p>段落</p>
-        <p>段落</p>
-        <p>段落</p>
-        <p>段落</p>
-        <p>段落</p>
-        <p>段落</p>
-        <p>段落</p>
-        <p>段落</p>
-        <p>段落</p>
-        <p>段落</p>
-        <p>段落</p>
-
-        <div style="width: 100px; margin-left:100px;">
-            <y-sticky :distance="50">
-                <div style="background: gray;">这里是头部</div>
-            </y-sticky>
-        </div>
-        <p>段落</p>
-        <p>段落</p>
-        <p>段落</p>
-        <p>段落</p>
-        <p>段落</p>
-        <p>段落</p>
-        <p>段落</p>
-        <p>段落</p>
-        <p>段落</p>
-        <p>段落</p>
-        <p>段落</p>
-        <p>段落</p>
-        <p>段落</p>
+<!--       <y-cascader-->
+<!--               :data.sync="data"-->
+<!--               :selected.sync="selectedCascader"-->
+<!--                :loadData="loadData">-->
+<!--       </y-cascader>-->
+<!--        {{tableSelected}}-->
+<!--        <y-table-->
+<!--                :data="tableData"-->
+<!--                :columns="columns"-->
+<!--                :bordered="true"-->
+<!--                :selected.sync="tableSelected"></y-table>-->
+        <y-button icon="settings">按钮</y-button>
     </div>
 
 </template>
