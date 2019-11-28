@@ -6,12 +6,45 @@
 <!--               :selected.sync="selectedCascader"-->
 <!--                :loadData="loadData">-->
 <!--       </y-cascader>-->
-        {{tableSelected}}
-        <y-table
-                :data="tableData"
-                :columns="columns"
-                :bordered="true"
-                :selected.sync="tableSelected"></y-table>
+<!--        {{tableSelected}}-->
+<!--        <div style="height: 100px;border: 1px solid red;"></div>-->
+<!--        <y-table-->
+<!--                :data="tableData"-->
+<!--                :columns="columns"-->
+<!--                :bordered="true"-->
+<!--                :selected.sync="tableSelected"></y-table>-->
+
+
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+
+        <div style="width: 100px; margin-left:100px;">
+            <y-sticky :distance="50">
+                <div style="background: gray;">这里是头部</div>
+            </y-sticky>
+        </div>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
     </div>
 
 </template>
@@ -30,6 +63,7 @@
     import CollapseItem from './collapse-item'
     import Cascader from './cascader'
     import Table from './table'
+    import Sticky from './sticky'
 
     import {data as dbData} from './db'
     import { tableData, columns} from './tableData'
@@ -50,6 +84,7 @@
             yCollapseItem: CollapseItem,
             yCascader: Cascader,
             YTable: Table,
+            YSticky: Sticky,
         },
         data(){
             return {
