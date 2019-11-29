@@ -11,7 +11,9 @@
                 :data="tableData"
                 :columns="columns"
                 :bordered="true"
+                :loading="loading"
                 :order-by.sync="orderBy"
+                @update:orderBy="request"
                 :selected.sync="tableSelected"></y-table>
 <!--        <y-button icon="settings">按钮</y-button>-->
     </div>
@@ -64,6 +66,7 @@
                 tableData,
                 columns,
                 tableSelected: [],
+                loading: false,
                 orderBy: {
                     name: 'asc',
                     age: true,
@@ -77,6 +80,12 @@
                     const result = dbData.filter(item => item.parent_id === id)
                     cb(result)
                 },500)
+            },
+            request() {
+                this.loading = true
+                setTimeout(() => {
+                    this.loading = false
+                }, 1000)
             }
         },
         created(){

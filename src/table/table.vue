@@ -24,6 +24,9 @@
                 </tr>
             </tbody>
         </table>
+        <div class="table-loading" v-if="loading">
+           <y-icon name="loading"></y-icon>
+        </div>
     </div>
 </template>
 
@@ -40,6 +43,10 @@
             },
             data: {
                 type: Array,
+            },
+            loading: {
+                type: Boolean,
+                default: false,
             },
             // 排序规则
             orderBy: {
@@ -130,6 +137,28 @@
 
 <style lang="scss" scoped>
     @import "../var";
+    @keyframes spin {
+        0%{transform: rotate(0deg);}
+        100%{transform: rotate(360deg);}
+    }
+    .table-wrapper{
+        position: relative;
+        .table-loading{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: rgba(255,255,255,.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            svg{
+                font-size: 30px;
+                animation: spin 1.5s infinite linear;
+            }
+        }
+    }
     .table{
         font-size: $font-size;
         color: #606266;
