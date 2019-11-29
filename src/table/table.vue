@@ -5,7 +5,15 @@
                 <tr>
                     <input type="checkbox" ref="allChecked" :checked="allCheckedStatus"  @click="onClickAll" />
                     <th v-if="indexVisible">#</th>
-                    <th v-for="col in columns">{{col.title}}</th>
+                    <th v-for="col in columns">
+                        <div class="order-by-wrapper">
+                            {{col.title}}
+                            <span class="order-by" v-if="col.field in orderBy" @click="changeSort(col.field)">
+                                <y-icon name="asc" :class="{active: orderBy[col.field] === 'asc'}"></y-icon>
+                                <y-icon name="desc" :class="{active: orderBy[col.field] === 'desc'}"></y-icon>
+                            </span>
+                        </div>
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -20,14 +28,23 @@
 </template>
 
 <script>
+    import Icon from '../icon/icon'
     export default {
         name: "yTable",
+        components: {
+            yIcon: Icon,
+        },
         props:{
             columns:{
                 type: Array,
             },
             data: {
                 type: Array,
+            },
+            // 排序规则
+            orderBy: {
+                type: Object,
+                default: () => {},
             },
             // 选中的项
             selected:{
@@ -95,6 +112,17 @@
                 }
 
                 this.$emit('update:selected', selectedCopy)
+            },
+            changeSort(field){
+               const orderByClone = JSON.parse(JSON.stringify(this.orderBy))
+                if (orderByClone[field] === 'desc') {
+                    orderByClone[field] = 'asc'
+                } else if(orderByClone[field] === 'asc'){
+                    orderByClone[field] = true
+                } else {
+                    orderByClone[field] = 'desc'
+                }
+                this.$emit('update:orderBy', orderByClone)
             }
         }
     }
@@ -138,5 +166,22 @@
                 padding: 4px;
             }
         }
+        .order-by-wrapper{
+            display: flex;
+            align-items: center;
+            .order-by{
+                margin-left: 5px;
+                display: inline-flex;
+                flex-direction: column;
+                svg{
+                    font-size: 12px;
+                    fill: #c0c4cc;
+                    &.active{
+                        fill: #409eff;
+                    }
+                }
+            }
+        }
+
     }
 </style>

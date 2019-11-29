@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    import cascaderItem from '../cascader/cascader-item';
+    import cascaderItem from './cascader-item';
     export default {
         name: "cascader",
         props: {

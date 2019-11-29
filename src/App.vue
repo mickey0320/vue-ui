@@ -6,13 +6,14 @@
 <!--               :selected.sync="selectedCascader"-->
 <!--                :loadData="loadData">-->
 <!--       </y-cascader>-->
-<!--        {{tableSelected}}-->
-<!--        <y-table-->
-<!--                :data="tableData"-->
-<!--                :columns="columns"-->
-<!--                :bordered="true"-->
-<!--                :selected.sync="tableSelected"></y-table>-->
-        <y-button icon="settings">按钮</y-button>
+        {{tableSelected}}
+        <y-table
+                :data="tableData"
+                :columns="columns"
+                :bordered="true"
+                :order-by.sync="orderBy"
+                :selected.sync="tableSelected"></y-table>
+<!--        <y-button icon="settings">按钮</y-button>-->
     </div>
 
 </template>
@@ -29,7 +30,7 @@
     import Popover from './popover/popover'
     import Collapse from './collapse/collapse'
     import CollapseItem from './collapse/collapse-item'
-    import Cascader from './collapse/cascader'
+    import Cascader from './cascader/cascader'
     import Table from './table/table'
     import Sticky from './sticky/sticky'
 
@@ -63,6 +64,11 @@
                 tableData,
                 columns,
                 tableSelected: [],
+                orderBy: {
+                    name: 'asc',
+                    age: true,
+                    score: true,
+                }
             }
         },
         methods:{
