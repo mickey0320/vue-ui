@@ -1,9 +1,12 @@
 <template>
-    <div class="table-wrapper">
-        <table class="table" :class="{bordered, striped, compact}">
-            <thead>
+    <div class="table-wrapper" ref="tableWrapper">
+        <div  class="body-table-wrapper" ref="bodyTableWrapper">
+            <table class="body-table table" :class="{bordered, striped, compact}" ref="bodyTable">
+                <thead>
                 <tr>
-                    <input type="checkbox" ref="allChecked" :checked="allCheckedStatus"  @click="onClickAll" />
+                    <th>
+                        <input type="checkbox" ref="allChecked" :checked="allCheckedStatus"  @click="onClickAll" />
+                    </th>
                     <th v-if="indexVisible">#</th>
                     <th v-for="col in columns">
                         <div class="order-by-wrapper">
@@ -15,15 +18,18 @@
                         </div>
                     </th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <tr v-for="(rowData,index) in data">
-                    <input type="checkbox" :checked="getCheckedStatus(rowData)" @click="onClickItem($event,rowData)" />
+                    <td>
+                        <input type="checkbox" :checked="getCheckedStatus(rowData)" @click="onClickItem($event,rowData)" />
+                    </td>
                     <td v-if="indexVisible">{{index + 1}}</td>
                     <td v-for="col in columns">{{rowData[col.field]}}</td>
                 </tr>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
         <div class="table-loading" v-if="loading">
            <y-icon name="loading"></y-icon>
         </div>
@@ -47,6 +53,9 @@
             loading: {
                 type: Boolean,
                 default: false,
+            },
+            height: {
+                type: [Number, String],
             },
             // 排序规则
             orderBy: {
@@ -79,6 +88,10 @@
                 default: false,
             }
         },
+        mounted(){
+            this.setTableHeight()
+            this.createHeadTable()
+        },
         computed:{
             allCheckedStatus(){
                 return this.selected.length === this.data.length;
@@ -97,6 +110,27 @@
             }
         },
         methods: {
+            setTableHeight(){
+                const { bodyTableWrapper, bodyTable} = this.$refs
+                const { height: headHeight } = bodyTable.children[0].getBoundingClientRect()
+                bodyTableWrapper.style.height = this.height - headHeight + 'px'
+            },
+            createHeadTable(){
+                const { bodyTable, tableWrapper, bodyTableWrapper} = this.$refs
+                const headTable = bodyTable.cloneNode(false)
+                const arrWidths = Array.from(bodyTable.children[0].children[0].children).map((th)=>{
+                    return th.getBoundingClientRect().width
+                })
+                // 到原来的thead移动到新的table下面
+                headTable.appendChild(bodyTable.children[0])
+                Array.from(headTable.children[0].children[0].children).forEach((th,index) => {
+                    th.style.width = `${arrWidths[index]}px`
+                })
+                tableWrapper.insertBefore(headTable, bodyTableWrapper)
+                Array.from(bodyTable.children[0].children[0].children).forEach((th,index) => {
+                    th.style.width = `${arrWidths[index]}px`
+                })
+            },
             getCheckedStatus(rowData){
                 return this.selected.findIndex(item => item.id === rowData.id) > -1
             },
@@ -143,6 +177,63 @@
     }
     .table-wrapper{
         position: relative;
+        .body-table-wrapper{
+            overflow: auto;
+        }
+        .table{
+            font-size: $font-size;
+            color: #606266;
+            border-collapse: collapse;
+            width: 100%;
+            text-align: left;
+            tr{
+                background-color: #fff;
+                border-bottom: 1px solid $table-border-color;
+            }
+            th{
+                color: #909399;
+                font-weight: normal;
+            }
+            td,th{
+                padding: 8px;
+            }
+
+            &.bordered{
+                border: 1px solid $table-border-color;
+                td,th{
+                    border: 1px solid $table-border-color;
+                }
+            }
+            &.striped{
+                tr{
+                    &:nth-child(even){
+                        background: #f5f7fa;
+                    }
+                }
+            }
+            &.compact{
+                th,td{
+                    padding: 4px;
+                }
+            }
+            .order-by-wrapper{
+                display: flex;
+                align-items: center;
+                .order-by{
+                    margin-left: 5px;
+                    display: inline-flex;
+                    flex-direction: column;
+                    svg{
+                        font-size: 12px;
+                        fill: #c0c4cc;
+                        &.active{
+                            fill: #409eff;
+                        }
+                    }
+                }
+            }
+
+        }
         .table-loading{
             position: absolute;
             left: 0;
@@ -159,58 +250,5 @@
             }
         }
     }
-    .table{
-        font-size: $font-size;
-        color: #606266;
-        border-collapse: collapse;
-        width: 100%;
-        text-align: left;
-        tr{
-            background-color: #fff;
-            border-bottom: 1px solid $table-border-color;
-        }
-        th{
-            color: #909399;
-            font-weight: normal;
-        }
-        td,th{
-            padding: 8px;
-        }
 
-        &.bordered{
-            border: 1px solid $table-border-color;
-            td,th{
-                border: 1px solid $table-border-color;
-            }
-        }
-        &.striped{
-           tr{
-               &:nth-child(even){
-                  background: #f5f7fa;
-               }
-           }
-        }
-        &.compact{
-            th,td{
-                padding: 4px;
-            }
-        }
-        .order-by-wrapper{
-            display: flex;
-            align-items: center;
-            .order-by{
-                margin-left: 5px;
-                display: inline-flex;
-                flex-direction: column;
-                svg{
-                    font-size: 12px;
-                    fill: #c0c4cc;
-                    &.active{
-                        fill: #409eff;
-                    }
-                }
-            }
-        }
-
-    }
 </style>

@@ -12,6 +12,7 @@
                 :columns="columns"
                 :bordered="true"
                 :loading="loading"
+                :height="400"
                 :order-by.sync="orderBy"
                 @update:orderBy="request"
                 :selected.sync="tableSelected"></y-table>

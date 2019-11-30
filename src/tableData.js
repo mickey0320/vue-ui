@@ -34,6 +34,42 @@ export const tableData = [{
     age: 25,
     hobby: '踢足球',
     score: 90,
+},{
+    id: 6,
+    name: '黎八',
+    age: 25,
+    hobby: '踢足球',
+    score: 90,
+},{
+    id: 6,
+    name: '黎八',
+    age: 25,
+    hobby: '踢足球',
+    score: 90,
+},{
+    id: 6,
+    name: '黎八',
+    age: 25,
+    hobby: '踢足球',
+    score: 90,
+},{
+    id: 6,
+    name: '黎八',
+    age: 25,
+    hobby: '踢足球',
+    score: 90,
+},{
+    id: 6,
+    name: '黎八',
+    age: 25,
+    hobby: '踢足球',
+    score: 90,
+},{
+    id: 6,
+    name: '黎八',
+    age: 25,
+    hobby: '踢足球',
+    score: 90,
 }]
 
 export const columns = [{
