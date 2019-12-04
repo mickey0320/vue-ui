@@ -42,27 +42,24 @@
             }
         },
         methods: {
-            getClass(prefix, prop = prefix) {
+            getClass(prefix, obj = {}) {
                 const result = []
-                result.push(`col-${prefix}-${this[prop].span}`)
-                if (this[prop].offset){
-                    result.push(`col-offset-${prefix}-${this[prop].offset}`)
+                if (obj.span) {
+                    result.push(`col-${prefix}${obj.span}`)
                 }
-
+                if (obj.offset) {
+                    result.push(`col-offset-${prefix}${obj.offset}`)
+                }
                 return result
             },
             getColClasses() {
                 const styles = []
-                if (this.span) {
-                    styles.push(`col-${this.span}`)
-                }
-                if (this.offset) {
-                    styles.push(`col-offset-${this.offset}`)
-                }
-                this.ipad && styles.push(...this.getClass('ipad'))
-                this.narrowPc && styles.push(...this.getClass('narrow-pc', 'narrowPc'))
-                this.pc && styles.push(...this.getClass('pc'))
-                this.widePc && styles.push(...this.getClass('wide-pc', 'widePc'))
+
+                styles.push(...this.getClass('',{span:this.span,offset:this.offset}))
+                styles.push(...this.getClass('ipad-',this.ipad))
+                styles.push(...this.getClass('narrow-pc-', this.narrowPc))
+                styles.push(...this.getClass('pc-', this.pc))
+                styles.push(...this.getClass('wide-pc-',this.widePc))
 
                 return styles
 
