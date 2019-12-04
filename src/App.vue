@@ -17,12 +17,26 @@
 <!--                :selected.sync="tableSelected"></y-table>-->
 <!--        <y-button icon="settings">按钮</y-button>-->
         <div class="grid-container">
-            <y-row :gutter="20">
-                <y-col :span="6"><div class="span">col1</div></y-col>
-                <y-col :span="4"><div class="span">col2</div></y-col>
-                <y-col :span="6"><div class="span">col3</div></y-col>
-                <y-col :span="6"><div class="span">col4</div></y-col>
-            </y-row>
+          <y-row>
+              <y-col span="24" :ipad="{span:12}" :pc="{span:8}">
+                  <div>col</div>
+              </y-col>
+              <y-col span="24" :ipad="{span:12}" :pc="{span:8}">
+                  <div>col</div>
+              </y-col>
+              <y-col span="24" :ipad="{span:12}" :pc="{span:8}">
+                  <div>col</div>
+              </y-col>
+              <y-col span="24" :ipad="{span:12}" :pc="{span:8}">
+                  <div>col</div>
+              </y-col>
+              <y-col span="24" :ipad="{span:12}" :pc="{span:8}">
+                  <div>col</div>
+              </y-col>
+              <y-col span="24" :ipad="{span:12}" :pc="{span:8}">
+                  <div>col</div>
+              </y-col>
+          </y-row>
         </div>
 
     </div>
@@ -117,9 +131,8 @@
         border: 1px solid green;
     }
     .grid-container{
-        width: 1000px;
-        height: 100px;
-        border: 1px solid red;
-        margin: 100px auto;
+       div{
+           border: 1px solid green;
+       }
     }
 </style>
