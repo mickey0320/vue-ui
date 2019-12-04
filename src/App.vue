@@ -1,27 +1,37 @@
 <template>
-    <div >
+    <div>
 <!--        {{data && data[4] && data[4].children}}-->
 <!--       <y-cascader-->
 <!--               :data.sync="data"-->
 <!--               :selected.sync="selectedCascader"-->
 <!--                :loadData="loadData">-->
 <!--       </y-cascader>-->
-        {{tableSelected}}
-        <y-table
-                :data="tableData"
-                :columns="columns"
-                :bordered="true"
-                :loading="loading"
-                :height="400"
-                :order-by.sync="orderBy"
-                @update:orderBy="request"
-                :selected.sync="tableSelected"></y-table>
+<!--        <y-table-->
+<!--                :data="tableData"-->
+<!--                :columns="columns"-->
+<!--                :bordered="true"-->
+<!--                :loading="loading"-->
+<!--                :height="400"-->
+<!--                :order-by.sync="orderBy"-->
+<!--                @update:orderBy="request"-->
+<!--                :selected.sync="tableSelected"></y-table>-->
 <!--        <y-button icon="settings">按钮</y-button>-->
+        <div class="grid-container">
+            <y-row :gutter="20">
+                <y-col :span="6"><div class="span">col1</div></y-col>
+                <y-col :span="4"><div class="span">col2</div></y-col>
+                <y-col :span="6"><div class="span">col3</div></y-col>
+                <y-col :span="6"><div class="span">col4</div></y-col>
+            </y-row>
+        </div>
+
     </div>
 
 </template>
 
 <script>
+    import Row from './grid/row'
+    import Col from './grid/col'
     import Button from './button/button'
     import ButtonGroup from './button/button-group'
     import Input from './input/input'
@@ -43,6 +53,8 @@
     export default {
         name: "App.vue",
         components: {
+            yRow: Row,
+            yCol: Col,
             yButton: Button,
             yButtonGroup: ButtonGroup,
             yInput: Input,
@@ -100,5 +112,14 @@
 <style lang="scss" scoped>
     .line{
         margin: 10px 0;
+    }
+    .span{
+        border: 1px solid green;
+    }
+    .grid-container{
+        width: 1000px;
+        height: 100px;
+        border: 1px solid red;
+        margin: 100px auto;
     }
 </style>
